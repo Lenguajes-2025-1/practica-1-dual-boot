@@ -5,12 +5,11 @@
   "Interpreta una expresión de tipo AE y la evalua a un resultado numérico.
   
    Params:
-    - [exp]: La expresión de tipo AE que se evaluará.
+   - [exp]: La expresión de tipo AE que se evaluará.
    
-    Uses:
+   Uses:
    - instance?: Para revisar si la expresión ingresada es alguna instancia de 
     de un tipo AE
-
    
    Returns:
    - Valor número de la expresión ingresada.
@@ -22,7 +21,9 @@
     ;; Si es una suma, se evaluan ambos lados y se suma.
     (instance? wae/AddG exp) (+ (interp-AE (:izq exp)) (interp-AE (:der exp)))
     ;; Si es una resta, se evaluan ambos lados y se resta.
-    (instance? wae/SubG exp) (- (interp-AE (:izq exp)) (interp-AE (:der exp)))))
+    (instance? wae/SubG exp) (- (interp-AE (:izq exp)) (interp-AE (:der exp)))
+
+    :else (throw (Exception. (str "Expresión AE Inválida: " exp)))))
 
 (defn interp-WAE
   "Interpreta una expresión de tipo WAE y la evalua a un resultado numérico.
@@ -59,4 +60,5 @@
           value (interp-WAE (:value exp) env)  ;; Evalúa el valor
           body (:body exp)]
       (interp-WAE body (assoc env id value))) ;; Actualiza el entorno con el nuevo valor
-    ))
+
+    :else (throw (Exception. (str "Expresión WAE Inválida: " exp)))))
