@@ -1,7 +1,7 @@
 # Practica 1
 
 | Alumnos                     | No. de Cuenta |
-| --------------------------- | ------------- |                                             |
+ --------------------------- | ------------- 
 | Paredes Zamudio Luis Daniel | 318159926     |
 | Lima García Adrián          | 419004774     |
 
